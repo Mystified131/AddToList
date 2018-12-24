@@ -57,6 +57,44 @@ namespace MVCApplication.Controllers
 
         }
 
+
+        [HttpGet]
+        public IActionResult Remove()
+        {
+            if (TheList.Count > 0)
+            {
+                RemoveViewModel removeViewModel = new RemoveViewModel();
+
+                removeViewModel.TheList = TheList;
+
+                return View(removeViewModel);
+            }
+
+            else
+            {
+                return Redirect("/");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Remove(RemoveViewModel removeViewModel)
+
+        {
+            if (ModelState.IsValid)
+            {
+
+                TheList.Remove(removeViewModel.NewElement1);
+
+                removeViewModel.TheList = TheList;
+
+                return View(removeViewModel);
+            }
+
+            return Redirect("/");
+
+        }
+
+
     }
 
 
