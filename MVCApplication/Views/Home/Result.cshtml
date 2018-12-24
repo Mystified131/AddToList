@@ -1,0 +1,24 @@
+﻿@model MVCApplication.ViewModels.ResultViewModel
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h2>Result</h2>
+
+<br />
+
+
+@foreach (string item in Model.TheList)
+
+{
+    <p>@item</p>
+
+
+}
+
+<br />
+
+<div asp-validation-summary="All"></div><br />
+
+<p><a asp-controller="Home" asp-action="Index">Home Page</a></p>
