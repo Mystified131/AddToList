@@ -22,6 +22,12 @@ namespace MVCApplication.Controllers
             return View(indexViewModel);
         }
 
+        public IActionResult Error()
+        {
+
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Result()
         {
@@ -53,7 +59,7 @@ namespace MVCApplication.Controllers
                 return View(resultViewModel);
             }
 
-            return Redirect("/");
+            return Redirect("/Home/Error");
 
         }
 
@@ -90,7 +96,7 @@ namespace MVCApplication.Controllers
                 return Redirect("/Home/Result");
             }
 
-            return Redirect("/");
+            return Redirect("/Home/Error");
 
         }
 
@@ -126,9 +132,9 @@ namespace MVCApplication.Controllers
                 return View("EditItem");
                 }
 
-                return Redirect("/");
+            return Redirect("/Home/Error");
 
-            }
+        }
 
 
         [HttpGet]
@@ -161,7 +167,7 @@ namespace MVCApplication.Controllers
                 return Redirect("/Home/Result");
             }
 
-            return Redirect("/");
+            return Redirect("/Home/Error");
 
         }
     }
