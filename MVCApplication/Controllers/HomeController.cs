@@ -14,6 +14,7 @@ namespace MVCApplication.Controllers
     {
         static public List<string> TheList = new List<string>();
         static public string Searchstr;
+        static public string Bridgeelement;
 
         public IActionResult Index()
         {
@@ -128,7 +129,8 @@ namespace MVCApplication.Controllers
                 {
 
                     ViewBag.NewElement1 = editSelectViewModel.NewElement1;
-                    TheList.Remove(editSelectViewModel.NewElement1);
+                    Bridgeelement = editSelectViewModel.NewElement1;
+                TheList.Remove(editSelectViewModel.NewElement1);
 
                 return View("EditItem");
                 }
@@ -168,6 +170,7 @@ namespace MVCApplication.Controllers
                 return Redirect("/Home/Result");
             }
 
+            TheList.Add(Bridgeelement);
             return Redirect("/Home/Error");
 
         }
