@@ -212,8 +212,26 @@ namespace MVCApplication.Controllers
             if (TheList.Count > 0)
             {
                 SearchResultViewModel searchResultViewModel = new SearchResultViewModel();
+                List<string> Anslist = new List<string>();
 
-                var Anslist = TheList.Where(c => c.Contains(Searchstr));
+                foreach (string item in TheList)
+                {
+                    if(item.Contains(Searchstr))
+                    {
+
+                        Anslist.Add(item);
+
+                    }
+
+
+                }
+
+                if(Anslist.Count == 0)
+                {
+
+                    Anslist.Add("That search returned no results.");
+
+                }
 
                 ViewBag.Anslist = Anslist;
 
