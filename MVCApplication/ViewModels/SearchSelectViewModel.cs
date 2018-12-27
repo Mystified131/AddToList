@@ -10,6 +10,6 @@ namespace MVCApplication.ViewModels
     {
         [Required]
         public String Searchstr { get; set; }
-        public List<string> TheList { get; set; }
+
     }
 }

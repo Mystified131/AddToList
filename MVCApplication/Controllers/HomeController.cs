@@ -13,7 +13,7 @@ namespace MVCApplication.Controllers
     public class HomeController : Controller
     {
         static public List<string> TheList = new List<string>();
-        static string Searchstr;
+        static public string Searchstr;
 
         public IActionResult Index()
         {
