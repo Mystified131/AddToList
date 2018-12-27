@@ -53,7 +53,7 @@ namespace MVCApplication.Controllers
             if (ModelState.IsValid)
             {
 
-                TheList.Add(resultViewModel.NewElement);
+                TheList.Add(resultViewModel.NewElement.ToLower());
 
                 resultViewModel.TheList = TheList;
 
@@ -195,7 +195,7 @@ namespace MVCApplication.Controllers
             if (ModelState.IsValid)
 
             {
-                Searchstr = searchSelectViewModel.Searchstr;
+                Searchstr = searchSelectViewModel.Searchstr.ToLower();
                 return Redirect("/Home/SearchResult");
             }
 
