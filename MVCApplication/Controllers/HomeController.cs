@@ -13,6 +13,7 @@ namespace MVCApplication.Controllers
     public class HomeController : Controller
     {
         static public List<string> TheList = new List<string>();
+        static string Searchstr;
 
         public IActionResult Index()
         {
@@ -170,6 +171,59 @@ namespace MVCApplication.Controllers
             return Redirect("/Home/Error");
 
         }
+
+        [HttpGet]
+        public IActionResult SearchSelect()
+        {
+            if (TheList.Count > 0)
+            {
+                SearchSelectViewModel searchSelectViewModel = new SearchSelectViewModel();
+
+                return View(searchSelectViewModel);
+            }
+
+            else
+            {
+                return Redirect("/");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult SearchSelect(SearchSelectViewModel searchSelectViewModel)
+
+        {
+            if (ModelState.IsValid)
+
+            {
+                Searchstr = searchSelectViewModel.Searchstr;
+                return Redirect("/Home/SearchResult");
+            }
+
+            return Redirect("/Home/Error");
+
+        }
+
+        [HttpGet]
+        public IActionResult SearchResult()
+        {
+            if (TheList.Count > 0)
+            {
+                SearchResultViewModel searchResultViewModel = new SearchResultViewModel();
+
+                var Anslist = TheList.Where(c => c.Contains(Searchstr));
+
+                ViewBag.Anslist = Anslist;
+
+                return View(searchResultViewModel);
+            }
+
+            else
+            {
+                return Redirect("/");
+            }
+        }
+
+      
     }
 
 }

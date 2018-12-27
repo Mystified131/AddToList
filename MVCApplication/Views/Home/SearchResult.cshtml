@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "SearchResult";
+}
+
+<h2>Search Result</h2>
+
+<br /><br />
+
+@foreach (var item in ViewBag.Anslist)
+
+
+
+{
+    <p>@item</p>
+
+
+}
+
+
+<br /><br />
+
+<p><em>If no items appear, there were none found matching that search string.</em></p>
