@@ -216,7 +216,7 @@ namespace MVCApplication.Controllers
 
                 foreach (string item in TheList)
                 {
-                    if(item.Contains(Searchstr))
+                    if (item.Contains(Searchstr))
                     {
 
                         Anslist.Add(item);
@@ -226,7 +226,7 @@ namespace MVCApplication.Controllers
 
                 }
 
-                if(Anslist.Count == 0)
+                if (Anslist.Count == 0)
                 {
 
                     Anslist.Add("That search returned no results.");
@@ -242,11 +242,44 @@ namespace MVCApplication.Controllers
             {
                 return Redirect("/");
             }
+
         }
+
+        [HttpGet]
+        public IActionResult Sort()
+        {
+            if (TheList.Count > 0)
+            {
+                SortViewModel sortViewModel = new SortViewModel();
+
+
+                List<string> Bridgelist = new List<string>();
+                foreach (string item in TheList)
+                { 
+
+                Bridgelist.Add(item);
+
+                }
+
+                Bridgelist.Sort();
+
+                sortViewModel.Sortlist = Bridgelist;
+
+                return View(sortViewModel);
+            }
+
+            else
+            {
+                return Redirect("/");
+            }
+        }
+
+
+    }
 
       
     }
 
-}
+
 
 
